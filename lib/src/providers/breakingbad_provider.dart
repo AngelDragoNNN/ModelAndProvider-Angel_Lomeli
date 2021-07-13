@@ -11,5 +11,12 @@ class BreakingBadProvider {
     return data
         .map((personaje) => BreakingBadModel.transformarInstancia(personaje))
         .toList();
+
+      
+  }
+
+  Future<BreakingBadModel> obtenerPersonajeByIdOrName(String query)async{
+    final _response =await _http.get('$_url/$query');
+    return BreakingBadModel.transformarInstancia(_response.data);
   }
 }

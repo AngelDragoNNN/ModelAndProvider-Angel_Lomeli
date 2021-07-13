@@ -9,12 +9,10 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State {
-
   @override
   void initState() {
     final breakinBadState = Get.put(BreakingBadState());
     breakinBadState.obtenerPersonajes();
-
     super.initState();
   }
 
@@ -29,7 +27,6 @@ class HomePageState extends State {
           ],
         ),
       ),
-      
     );
   }
 }

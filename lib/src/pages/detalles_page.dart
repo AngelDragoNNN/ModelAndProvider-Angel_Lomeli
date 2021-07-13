@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:calix/src/model/breakingbad_models.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +11,21 @@ class DetalleBreakingBadPage extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as BreakingBadModel;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
+        backgroundColor: Colors.green[800],
+        elevation: 5.0,
+        title: Text(
+          'ID de personaje: ${breakingBad.charId.toString()}',
+          style: TextStyle(fontSize: 22,  shadows: [
+            Shadow(
+                blurRadius: 10.0,
+                color: Colors.pinkAccent,
+                offset: Offset(3.0, 2.0),
+                ),
+            ],
+        ),
+        ),
+        automaticallyImplyLeading: false,
+        centerTitle: true,
       ),
       body: Column(
         children: [
@@ -43,21 +58,21 @@ class DetalleBreakingBadPage extends StatelessWidget {
           ),
         ],
       ),
-    floatingActionButton: _botonHome(context),
+      floatingActionButton: _botonHome(context),
     );
   }
 }
 
-Widget _botonHome(BuildContext context){
+Widget _botonHome(BuildContext context) {
   return FloatingActionButton(
     backgroundColor: Colors.green[800],
     splashColor: Colors.pinkAccent,
     foregroundColor: Colors.black,
-    onPressed:(){
-    Navigator.pushNamed(context, '/');
-
-  },
-  child: Icon(Icons.home),);
+    onPressed: () {
+      Navigator.pushNamed(context, '/');
+    },
+    child: Icon(Icons.home),
+  );
 }
 
 class _DatosBreakingBadName extends StatelessWidget {
@@ -93,12 +108,11 @@ class _DatosBreakingBadBirthday extends StatelessWidget {
   _DatosBreakingBadBirthday(this.breakingBad);
   @override
   Widget build(BuildContext context) {
-    return 
-       Text(
-        breakingBad.birthday!,
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
-      );
+    return Text(
+      breakingBad.birthday!,
+      style: TextStyle(
+          fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+    );
   }
 }
 
@@ -110,7 +124,6 @@ class _CirculoImagen extends StatelessWidget {
     final _mediaQuery = MediaQuery.of(context).size;
     return Center(
       child: Container(
-  
         height: _mediaQuery.width * 1.1,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
